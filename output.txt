@@ -1,0 +1,53 @@
+﻿=== Memory Management Simulation (FIFO) ===
+Page fault! Process P1 needs page 0
+Memory: [0, None, None, None]
+
+Page fault! Process P1 needs page 1
+Memory: [0, 1, None, None]
+
+Process P2 accessed page 0 in memory
+Memory: [0, 1, None, None]
+
+Process P3 accessed page 0 in memory
+Memory: [0, 1, None, None]
+
+Page fault! Process P1 needs page 2
+Memory: [0, 1, 2, None]
+
+Process P2 accessed page 1 in memory
+Memory: [0, 1, 2, None]
+
+Total page faults (FIFO): 3
+
+=== Memory Management Simulation (LRU) ===
+Page fault! Process P1 needs page 0
+Memory: [0, None, None, None]
+
+Page fault! Process P1 needs page 1
+Memory: [0, 1, None, None]
+
+Process P2 accessed page 0 in memory
+Memory: [1, None, None, 0]
+
+Process P3 accessed page 0 in memory
+Memory: [1, None, None, 0]
+
+Page fault! Process P1 needs page 2
+Memory: [1, 2, None, 0]
+
+Process P2 accessed page 1 in memory
+Memory: [2, None, 0, 1]
+
+Total page faults (LRU): 3
+
+=== Producer-Consumer Simulation ===
+Producer added item 0 -> Buffer: [0]
+Consumer consumed item 0 -> Buffer: []
+Producer added item 1 -> Buffer: [1]
+Producer added item 2 -> Buffer: [1, 2]
+Consumer consumed item 1 -> Buffer: [2]
+Producer added item 3 -> Buffer: [2, 3]
+Producer added item 4 -> Buffer: [2, 3, 4]
+Consumer consumed item 2 -> Buffer: [3, 4]
+Consumer consumed item 3 -> Buffer: [4]
+Consumer consumed item 4 -> Buffer: []
