@@ -3,6 +3,7 @@ import threading
 from collections import deque
 import time
 
+
 # Memory Management Parameters
 TOTAL_FRAMES = 4
 memory = [None] * TOTAL_FRAMES
@@ -16,14 +17,15 @@ process_pages = {
     "P3": [0, 1, 2, 3]
 }
 
+
 # Paging System
 def access_page(process, page, algorithm='FIFO'):
-    global page_faults
+    global memory, fifo_queue, page_faults
     if page in memory:
         print(f"Process {process} accessed page {page} in memory")
         if algorithm == 'LRU':
             memory.remove(page)
-            memory.append(page)  # update LRU usage
+            memory.append(page) 
     else:
         page_faults += 1
         print(f"Page fault! Process {process} needs page {page}")
@@ -37,6 +39,7 @@ def access_page(process, page, algorithm='FIFO'):
     print(f"Memory: {memory}\n")
 
 def replace_page(algorithm, new_page):
+    global memory, fifo_queue
     if algorithm == 'FIFO':
         old_page = fifo_queue.popleft()
         index = memory.index(old_page)
@@ -79,18 +82,18 @@ def consumer():
 
 # Simulate Shell Commands
 def simulate_shell():
-    print("=== Memory Management Simulation ===")
+    global memory, fifo_queue, page_faults  # <-- ensure global is at start
+    print("=== Memory Management Simulation (FIFO) ===")
     commands = [("P1",0), ("P1",1), ("P2",0), ("P3",0), ("P1",2), ("P2",1)]
     for proc, page in commands:
         access_page(proc, page, algorithm='FIFO')
-
     print(f"Total page faults (FIFO): {page_faults}\n")
     
     # Reset for LRU simulation
-    global memory, fifo_queue, page_faults
     memory = [None]*TOTAL_FRAMES
     fifo_queue.clear()
     page_faults = 0
+
     print("=== Memory Management Simulation (LRU) ===")
     for proc, page in commands:
         access_page(proc, page, algorithm='LRU')
