@@ -1,4 +1,4 @@
-# Project Deliverable 3 – Memory Management and Process Synchronization
+# Deliverable 3 – Memory Management and Process Synchronization
 
 
 ## File Structure
@@ -8,5 +8,4 @@
   - Producer-Consumer simulation with semaphores
 
 ## How to Run
-1. Open PowerShell (or terminal) and navigate to the project folder and run
 python shell_simulation.py
