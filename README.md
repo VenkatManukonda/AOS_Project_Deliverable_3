@@ -9,4 +9,4 @@
 
 ## How to Run
 1. Open PowerShell (or terminal) and navigate to the project folder and run
-2. python shell_simulation.py
+python shell_simulation.py
